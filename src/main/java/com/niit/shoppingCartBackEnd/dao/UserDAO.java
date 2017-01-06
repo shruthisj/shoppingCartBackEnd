@@ -16,6 +16,8 @@ public interface UserDAO {
 	//to add user
 	public boolean updateUser(User user);
 	//to update the user
+	public boolean deleteUser(String id);
+	//to delete a user
 	
 	
 
