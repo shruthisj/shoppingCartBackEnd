@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.shoppingCartBackEnd.dao.SupplierDAO;
-import com.niit.shoppingCartBackEnd.dao.UserDAO;
 import com.niit.shoppingCartBackEnd.model.Supplier;
-import com.niit.shoppingCartBackEnd.model.User;
+
 
 public class TestSupplierDAO {
 	@Autowired
@@ -30,9 +29,10 @@ public class TestSupplierDAO {
 	
 	public void add()
 	{
-		supplier.setId("111");
+		supplier.setId("112");
 		supplier.setName("deccan");
 		supplier.setDescription("supplied by deccan ,bangalore-560001");
+		supplierDAO.addSupplier(supplier);
 		System.out.println("supplier added");
 	}
 	public static void main(String[] args)

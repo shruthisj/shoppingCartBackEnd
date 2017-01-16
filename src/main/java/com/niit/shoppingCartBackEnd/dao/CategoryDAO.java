@@ -9,7 +9,7 @@ public interface CategoryDAO
 {
 	public List<Category> list();
 
-	public Category updateCategory(Category category);
+	public boolean updateCategory(Category category);
 
 	public boolean addCategory(Category category);
 

@@ -1,16 +1,15 @@
 package com.niit.shoppingCartBackEndJunitTest;
 
-import static org.junit.Assert.*;
+import java.util.List;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.shoppingCartBackEnd.dao.CategoryDAO;
-import com.niit.shoppingCartBackEnd.dao.UserDAO;
 import com.niit.shoppingCartBackEnd.model.Category;
-import com.niit.shoppingCartBackEnd.model.User;
 
 public class junitCategoryDAO {
 
@@ -34,14 +33,35 @@ public class junitCategoryDAO {
 			
 		}
 	 
-	 @Test
+//	 @Test
 	 public void add()
 	 {
-		 category.setId("001");
-		 category.setName("books");
+		 category.setId("004");
+		 category.setName("be books");
 		 category.setDescription("this is about books");
+		 categoryDAO.addCategory(category);
 		 System.out.println("catrgory added");
 	 }
 	 
-
+	// @Test
+	 public void update()
+	 {
+		 category.setId("004");
+		 category.setName("toys");
+		 category.setDescription("this is about toys");
+		 categoryDAO.updateCategory(category);
+		 System.out.println("catrgory updated");
+	 }
+	// @Test
+	 public void listCategory(){
+	 //List<Category> c = categoryDAO.list();
+		 int size=categoryDAO.list().size();
+		 Assert.assertEquals("list",3, size);
+	 
+		 
+	 }	
+	 @Test
+	 public void deleteCategory(){
+		 Assert.assertEquals("delete", true, categoryDAO.deleteCategory("005"));
+		  }
 }

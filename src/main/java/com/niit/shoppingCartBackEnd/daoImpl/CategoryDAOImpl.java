@@ -23,24 +23,27 @@ public class CategoryDAOImpl implements CategoryDAO {
        
     @Transactional
 	public boolean addCategory(Category category) {
-		sessionFactory.getCurrentSession().update(category);
+		sessionFactory.getCurrentSession().save(category);
 		return false;
 	}
     @Transactional
 	public boolean deleteCategory(String id) {
-		
-		return false;
+		String hql="DELETE FROM Category WHERE id='"+id+"'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.executeUpdate();
+		return true;
 	}
     @Transactional
 	public List<Category> list() {
-		String hql="FROM Catergory";
+		String hql="FROM Category";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return query.list();
 	}
 
-	public Category updateCategory(Category category) {
-		// TODO Auto-generated method stub
-		return null;
+    @Transactional
+	public boolean updateCategory(Category category) {
+		sessionFactory.getCurrentSession().update(category);
+		return true;
 	}
 	
 
