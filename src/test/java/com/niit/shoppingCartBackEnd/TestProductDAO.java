@@ -33,13 +33,13 @@ public class TestProductDAO {
 	{
 		product.setId("prod_001");
 		product.setName("how to win");
-		product.setPrice("200");
+		product.setPrice(200);
 		product.setDescription("be");
 	    
-		product.setCategoryId("004");
+		product.setCategory_id("004");
 		
-		product.setSupplierId("112");
-		product.setStock("6000");
+		product.setSupplier_id("112");
+		product.setStock(6000);
 		
 		
 		productDAO.addProduct(product);

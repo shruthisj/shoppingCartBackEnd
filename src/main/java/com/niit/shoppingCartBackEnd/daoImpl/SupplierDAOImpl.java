@@ -3,19 +3,17 @@ package com.niit.shoppingCartBackEnd.daoImpl;
  import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-	import org.hibernate.query.Query;
+	
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Repository;
 	import org.springframework.transaction.annotation.EnableTransactionManagement;
 	import org.springframework.transaction.annotation.Transactional;
 
-	import com.niit.shoppingCartBackEnd.dao.CategoryDAO;
-import com.niit.shoppingCartBackEnd.dao.SupplierDAO;
-import com.niit.shoppingCartBackEnd.dao.UserDAO;
-	import com.niit.shoppingCartBackEnd.model.Category;
+	import com.niit.shoppingCartBackEnd.dao.SupplierDAO;
+import com.niit.shoppingCartBackEnd.model.Category;
 import com.niit.shoppingCartBackEnd.model.Supplier;
-import com.niit.shoppingCartBackEnd.model.User;
 
 	@Repository("supplierDAO")
 	@EnableTransactionManagement
@@ -27,7 +25,7 @@ import com.niit.shoppingCartBackEnd.model.User;
 		public boolean addSupplier(Supplier supplier) 
 	    {
 			try {
-				sessionFactory.getCurrentSession().save(supplier);
+				sessionFactory.getCurrentSession().saveOrUpdate(supplier);
 			} 
 			catch (HibernateException e) {
 				e.printStackTrace();
@@ -37,8 +35,11 @@ import com.niit.shoppingCartBackEnd.model.User;
 		}
 	    @Transactional
 		public boolean deleteSupplier(String id) {
+	    	String hql="DELETE FROM Supplier WHERE id='"+id+"'";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.executeUpdate();
+			return true;	
 			
-			return false;
 		}
 	    @Transactional
 		public List<Supplier> list() {
@@ -47,16 +48,28 @@ import com.niit.shoppingCartBackEnd.model.User;
 			return query.list();
 		}
 
-		public boolean updateSupplier1(Supplier supplier) {
-			// TODO Auto-generated method stub
-			return (Boolean) null;
-		}
-		
 		public boolean updateSupplier(Supplier supplier) {
-			// TODO Auto-generated method stub
-			return false;
+			sessionFactory.getCurrentSession().saveOrUpdate(supplier);
+			return true;
 		}
 		
+		 @Transactional
+		    public Supplier getSupplier(String id)
+		    {
+		    	String hql = "from Supplier where id="+"'"+id+"'";
+		    	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		    	List<Supplier> list = query.list();
+		    	return list.get(0);
+		    }
+		 
+		 @Transactional
+		 public Supplier getSupplierName(String name)
+		 {
+			 String hql = "from Supplier where name="+"'"+name+"'";
+		    	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		    	List<Supplier> list = query.list();
+		    	return list.get(0);
+		 }
 
 	}
 

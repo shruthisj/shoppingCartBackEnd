@@ -15,7 +15,7 @@ public class Product {
 	@Id
 	private String id;
 	private String name;
-	private String  price;
+	private int  price;
 	private String description;
 	@ManyToOne
 	@JoinColumn(name="category_id",insertable=false,updatable=false,nullable=false)
@@ -25,86 +25,72 @@ public class Product {
 	@JoinColumn(name="supplier_id",insertable=false,updatable=false,nullable=false)
 	private Supplier supplier;
 	private String supplier_id;
-	private String stock;
-	public String getId()
-	{
-		return id;
-	}
+	private int stock;
 	
-	public void setId(String id)
-	{
-		this.id=id;
-	}
 	
-	public String getName()
-	{
-		return name;
-	}
 	
-	public void setName(String name)
-	{
-		this.name=name;
-	}
-	
-	public String getPrice()
-	{
-		return price;
-	}
-    
-	public void setPrice(String price)
-	{
-		this.price=price;
-	}
-	public String getDescription()
-	{
-		return description;
-	}
-	public void setDescription(String description)
-	{
-	    this.description=description;	
-	}
-	public String getCategoryId()
-	{
-		return category_id;
-	}
-	public void setCategoryId(String category_id)
-	{
-		this.category_id=category_id;
-	}
-	public String getSupplierId()
-	{
-		return supplier_id;
-	}
-	public void setSupplierId(String supplier_id)
-	{
-		this.supplier_id = supplier_id;
-	}
-	public String getStock()
-	{
+	public int getStock() {
 		return stock;
 	}
 	
-	public void setStock(String stock)
-	{
-		this.stock=stock;
+	
+	
+	public String getId() {
+		return id;
 	}
-	public Category getCategory()
-	{
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Category getCategory() {
 		return category;
 	}
-	public void setCategory(Category category)
-	{
-		this.category=category;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-	public Supplier getSupplier()
-	{
+	public String getCategory_id() {
+		return category_id;
+	}
+	public void setCategory_id(String category_id) {
+		this.category_id = category_id;
+	}
+	public Supplier getSupplier() {
 		return supplier;
 	}
-	public void setSupplier(Supplier supplier)
-	{
-		this.supplier=supplier;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
-
+	public String getSupplier_id() {
+		return supplier_id;
+	}
+	public void setSupplier_id(String supplier_id) {
+		this.supplier_id = supplier_id;
+	}
+	
+	
 	
 }
 

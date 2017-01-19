@@ -1,7 +1,5 @@
 package com.niit.shoppingCartBackEndJunitTest;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,39 +31,44 @@ public class junitProductDAO {
 			
 		}
 	 
-	// @Test
+	 //@Test
 	 public void add()
 	 {
 		product.setId("pro_002"); 
 		product.setName("wings of fire");
+		
+		product.setPrice(787);
 		product.setDescription("by Sir ABJ Abdul Kalam");
-		product.setCategoryId("004");
-		product.setSupplierId("112");
-		product.setStock("9000000");
+	    product.setCategory_id("cat-005");
+		product.setSupplier_id("112");
+		product.setStock(9000000);
+		productDAO.addProduct(product);
 		System.out.println("product 'book' added");
 		
 	 }
 	 
-	 @Test
+	 //@Test
 	 public void update()
 	 {
 		 product.setId("pro_001"); 
-			product.setName("how to win");
-			product.setDescription("by shiv patil");
-			product.setCategoryId("004");
-			product.setSupplierId("112");
-			product.setStock("8999999");
+			product.setName("LITERATURE");
+			product.setDescription("by patil");
+			product.setCategory_id("004");
+			product.setSupplier_id("112");
+			product.setStock(899999);
+			
+			productDAO.updateProduct(product);
 			System.out.println("product updated");
 	 }
-	// @Test
+	@Test
 	 public void listPoduct(){
 	 
 		 int size=productDAO.list().size();
-		 Assert.assertEquals("list",1, size);
+		 Assert.assertEquals("list",2, size);
 	 
 		 
 	 }	
-	// @Test
+	//@Test
 	 public void deleteProduct(){
 		 Assert.assertEquals("delete", true, productDAO.deleteProduct("pro_002"));
 		  }

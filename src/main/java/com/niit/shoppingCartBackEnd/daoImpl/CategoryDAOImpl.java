@@ -3,6 +3,7 @@
 package com.niit.shoppingCartBackEnd.daoImpl;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,20 @@ public class CategoryDAOImpl implements CategoryDAO {
        
     @Transactional
 	public boolean addCategory(Category category) {
-		sessionFactory.getCurrentSession().save(category);
+		sessionFactory.getCurrentSession().saveOrUpdate(category);
 		return false;
 	}
     @Transactional
 	public boolean deleteCategory(String id) {
-		String hql="DELETE FROM Category WHERE id='"+id+"'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.executeUpdate();
+		try {
+			String hql="DELETE FROM Category WHERE id='"+id+"'";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			query.executeUpdate();
+			
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 	}
     @Transactional
@@ -46,5 +53,21 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return true;
 	}
 	
+    @Transactional
+    public Category getCategory(String id)
+    {
+    	String hql = "from Category where id="+"'"+id+"'";
+    	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+    	List<Category> list = query.list();
+    	return list.get(0);
+    }
+    @Transactional
+    public Category getCategoryName(String name)
+    {
+    	String hql = "from Category where name="+"'"+name+"'";
+    	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+    	List<Category> list = query.list();
+    	return list.get(0);
+    }
 
 }

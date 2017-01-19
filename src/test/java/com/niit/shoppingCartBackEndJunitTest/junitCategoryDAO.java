@@ -52,7 +52,7 @@ public class junitCategoryDAO {
 		 categoryDAO.updateCategory(category);
 		 System.out.println("catrgory updated");
 	 }
-	// @Test
+	 @Test
 	 public void listCategory(){
 	 //List<Category> c = categoryDAO.list();
 		 int size=categoryDAO.list().size();
@@ -63,5 +63,12 @@ public class junitCategoryDAO {
 	 @Test
 	 public void deleteCategory(){
 		 Assert.assertEquals("delete", true, categoryDAO.deleteCategory("005"));
-		  }
+	 }
+	 
+	 @Test
+	 public void uhjoij()
+	 {
+		 category = categoryDAO.getCategoryName("philosophy");
+		 System.out.println(category.getId());
+	 }
 }

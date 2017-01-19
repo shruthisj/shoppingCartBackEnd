@@ -28,7 +28,7 @@ public class UserDAOImpl implements UserDAO {
 	}
     @Transactional
 	public boolean addUser(User user) {
-		sessionFactory.getCurrentSession().save(user);
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
 		return false;
 	}
     @Transactional

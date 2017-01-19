@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.shoppingCartBackEnd.dao.ProductDAO;
 import com.niit.shoppingCartBackEnd.model.Product;
 
+@SuppressWarnings("deprecation")
 @Repository("productDAO")
 @EnableTransactionManagement
 public class ProductDAOImpl implements ProductDAO
@@ -31,7 +32,7 @@ public class ProductDAOImpl implements ProductDAO
 	{
 		try 
 		{
-			sessionFactory.getCurrentSession().save(product);
+			sessionFactory.getCurrentSession().saveOrUpdate(product);
 		}
 		catch (HibernateException e) 
 		{
@@ -76,7 +77,7 @@ public class ProductDAOImpl implements ProductDAO
 	}
 
 	@Transactional
-	public List<Product> listProduct() 
+	public List<Product> list() 
 	{
 		String hql = "FROM Product";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
@@ -89,9 +90,7 @@ public class ProductDAOImpl implements ProductDAO
 		return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
 	}
 
-	public List<Product> list() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
 	}
 
-}

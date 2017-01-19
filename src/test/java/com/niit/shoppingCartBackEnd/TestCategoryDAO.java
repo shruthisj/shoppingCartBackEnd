@@ -40,6 +40,13 @@ public class TestCategoryDAO {
 	public static void main(String[] args)
 	{
 		TestCategoryDAO testCategoryDAO=new TestCategoryDAO();
-		testCategoryDAO.add();
+//		testCategoryDAO.add();
+		testCategoryDAO.testbyname();
+	}
+
+	public void testbyname()
+	{
+		category = categoryDAO.getCategoryName("philosophy");
+		System.out.println(category.getId());
 	}
 }
