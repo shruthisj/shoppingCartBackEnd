@@ -5,8 +5,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -26,9 +28,22 @@ public class Product {
 	private Supplier supplier;
 	private String supplier_id;
 	private int stock;
+	@Transient
+	private MultipartFile image; 
 	
 	
-	
+	public MultipartFile getImage() {
+		return image;
+	}
+
+
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+
+
 	public int getStock() {
 		return stock;
 	}

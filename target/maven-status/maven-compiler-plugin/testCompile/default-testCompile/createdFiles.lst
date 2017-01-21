@@ -1,4 +1,8 @@
+com\niit\shoppingCartBackEnd\TestUserDAO.class
+com\niit\shoppingCartBackEndJunitTest\junitSupplierDAO.class
 com\niit\shoppingCartBackEndJunitTest\junitCategoryDAO.class
+com\niit\shoppingCartBackEnd\TestCategoryDAO.class
+com\niit\shoppingCartBackEnd\TestProductDAO.class
 com\niit\shoppingCartBackEndJunitTest\junitUserDAO.class
 com\niit\shoppingCartBackEnd\TestSupplierDAO.class
-com\niit\shoppingCartBackEnd\TestUserDAO.class
+com\niit\shoppingCartBackEndJunitTest\junitProductDAO.class
