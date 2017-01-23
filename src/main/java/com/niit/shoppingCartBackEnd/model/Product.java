@@ -18,6 +18,7 @@ public class Product {
 	private String id;
 	private String name;
 	private int  price;
+	private String author;
 	private String description;
 	@ManyToOne
 	@JoinColumn(name="category_id",insertable=false,updatable=false,nullable=false)
@@ -103,6 +104,18 @@ public class Product {
 	}
 	public void setSupplier_id(String supplier_id) {
 		this.supplier_id = supplier_id;
+	}
+
+
+
+	public String getAuthor() {
+		return author;
+	}
+
+
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 	
